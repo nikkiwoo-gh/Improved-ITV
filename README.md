@@ -21,6 +21,8 @@ pip install -r requirements.txt
 
 ### Data
 
+[WebVid-genCap7M dataset](https://drive.google.com/file/d/18Dh20_ZlSGJ_XAFM2P5dpd3qSIR-vSBJ/view)
+
 to be released
 
 ### Checkpoints
