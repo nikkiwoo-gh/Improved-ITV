@@ -4,7 +4,7 @@ import pickle
 import os
 import sys
 sys.path.append('./util')
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 import shutil
 import json
@@ -246,13 +246,11 @@ def main():
     cap_prefixs = {'train':'.caption','val':'.caption'}
 
     ##word and phrase concept
-    concept_videolevel_paths = {
-        'train': os.path.join(rootpath, collections['train'], 'TextData', collections['train'] + cap_prefixs[
-            'train'] + '.txt.extracted_wordAndPhrase_videolevel.'+opt.concept_bank),
-        'val': os.path.join(rootpath, collections['val'], 'TextData', collections['val'] + cap_prefixs[
-            'val'] + '.txt.extracted_wordAndPhrase_videolevel.'+opt.concept_bank)
-    }
 
+    concept_videolevel_paths = {
+        'train':os.path.join(rootpath, collections['train'], 'TextData', collections['train'] + cap_prefixs['train'] + '.txt.extracted_wordAndPhrase_videolevel.'+opt.concept_bank+'%sconcept_phrasegt%dnumOfConceptGT5'%(trainCollection,opt.concept_fre_threshold)),
+        'val':os.path.join(rootpath, collections['val'], 'TextData', collections['val'] + cap_prefixs['val'] + '.txt.extracted_wordAndPhrase_videolevel.'+opt.concept_bank)
+                                }
 
     # optionally resume from a checkpoint to the encoder
     if opt.resume:

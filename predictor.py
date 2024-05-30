@@ -177,17 +177,20 @@ def main():
     if not hasattr(options, 'global_UL'):
         setattr(options, "global_UL", False)
     if not hasattr(options, 'concept_phrase'):
-        setattr(options, "concept_phrase", options.concept_phase)
-        options.concept_phrase.idx2phrase = options.concept_phrase.idx2phase
-        options.concept_phrase.phrase2idx = options.concept_phrase.phase2idx
-        options.concept_phrase.phrase2contractphrase = options.concept_phrase.phase2contractphase
-        del options.concept_phrase.idx2phase
-        del options.concept_phrase.phase2idx
-        del options.concept_phrase.phase2contractphase
+        concept_phrase = Concept_phrase()
+        setattr(options, "concept_phrase", concept_phrase)
+        options.concept_phrase.phrase2idx = options.concept_phase.phase2idx
+        options.concept_phrase.phrase2contractphrase = options.concept_phase.phase2contractphase
+        options.concept_phrase.idx = options.concept_phase.idx
+        options.concept_phrase.idx2contractIdx = options.concept_phase.idx2contractIdx
+        options.concept_phrase.idx2phrase = options.concept_phase.idx2phase
+        options.concept_phrase.num_contradict_paris = options.concept_phase.num_contradict_paris
+        del options.concept_phase
         options.concept_bank = 'concept_phrase'
     if not hasattr(options, 'contradicted_matrix_sp'):
         setattr(options, "contradicted_matrix_sp", options.contradicted_matrix_local_sp)
         del  options.contradicted_matrix_local_sp
+
     model = Improved_ITV(options)
 
     model.load_state_dict(checkpoint['model'])
@@ -211,7 +214,7 @@ def main():
     video2frames = read_dict(os.path.join(rootpath, testCollection, 'FeatureData', options.visual_feature,'video2frames.txt'))
 
     # set concept phase list for multi-label classification
-    concept_phrase=model.concept_phrase
+    concept_phrase=options.concept_phrase
     concept2vec = get_text_encoder('bow')(concept_phrase, istimes=0)
     options.concept_list_size = len(concept_phrase)
 
@@ -261,7 +264,8 @@ def main():
         narrative_flag = False
 
         query_sets.append(query_set)
-        output_dir_tmp = output_dir.replace(testCollection, '%s/results/%s/%s/%s' % (testCollection,query_set, trainCollection, valCollection),1)
+        output_dir_tmp = output_dir.replace(valCollection, '%s/%s/%s' % (query_set, trainCollection, valCollection))
+        output_dir_tmp = output_dir_tmp.replace('/%s/' % options.cv_name, '/results/')
         pred_result_file = os.path.join(output_dir_tmp, 'id.sent')
 
         print(pred_result_file)
@@ -415,7 +419,8 @@ def main():
         print("encode image time: %.3f s" % (time.time() - start))
 
     for query_set in query_sets:
-        output_dir_tmp = output_dir.replace(testCollection, '%s/results/%s/%s/%s' % (testCollection,query_set, trainCollection, valCollection),1)
+        output_dir_tmp = output_dir.replace(valCollection, '%s/%s/%s' % (query_set, trainCollection, valCollection))
+        output_dir_tmp = output_dir_tmp.replace('/%s/' % options.cv_name, '/results/')
         query_idx  =[]
         for i,sample in enumerate(queryset2queryidxs[query_set]):
             query_idx.append(int(sample))
