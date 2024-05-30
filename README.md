@@ -27,7 +27,7 @@ to be released
 
 ### Checkpoints
 
-to be released
+[Improved_ITV_trained_models.zip](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
 
 ## Usages
 
@@ -52,9 +52,9 @@ to be released
 
 ### 4. Inference on TRECVid datasets
 ```shell
-./do_predition_iacc.3.sh
-./do_predition_v3c1.sh
-./do_predition_v3c2.sh
+./do_prediction_iacc.3.sh
+./do_prediction_v3c1.sh
+./do_prediction_v3c2.sh
 ```
 
 ### 5. Evalution
