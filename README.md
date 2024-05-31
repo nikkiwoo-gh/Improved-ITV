@@ -55,28 +55,32 @@ e.g.,
 ./do_get_vocab_and_concept.sh tgif-msrvtt10k-VATEX 
 ```
 or download from [concept_phrase.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EZZ4l3eo675DmXh0afsPRF8B6rIp8V02WBOJKtv8tPkaxw?e=2iq38f), and unzip to the folder $rootpath/tgif-msrvtt10k-VATEX/TextData/
-### 2. prepare the data
+### 2. prepare concept annotation
 build up video-level concept annotation (script to be released), or download from [here](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je)   
 
+### 3. (Optional) pretrain the Improved ITV model
+```shell
+./do_pretrain.sh
+```
 
-### 3. train the Improved ITV model
+### 4. train the Improved ITV model
 
-#### 3.1 train from pre-trained checkpoint
+#### 4.1 train from pre-trained checkpoint
 ```shell
 ./do_train_from_pretrain.sh
 ```
-#### 3.2 train without pre-training
+#### 4.2 train without pre-training
 ```shell
 ./do_train.sh
 ```
-### 4. Inference on TRECVid datasets
+### 5. Inference on TRECVid datasets
 ```shell
 ./do_prediction_iacc.3.sh
 ./do_prediction_v3c1.sh
 ./do_prediction_v3c2.sh
 ```
 
-### 5. Evalution
+### 6. Evalution
 Remember to set the score_file correctly to your own path.
 ```shell
 cd tv-avs-eval/
