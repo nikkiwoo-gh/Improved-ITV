@@ -32,8 +32,8 @@ pip install -r requirements.txt
  [tgif-msrvtt10k-VATEX-videl_level_concept annotation](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je) 
 
 ### Model Checkpoints
-[pretrain_checkpoint_on_WebVid-genCap7M.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EW4pMfkSJMxIpkINCZOQO-UByX2x8Cl00iRklFp_eNLyjQ?e=ZdssuZ
-[Improved_ITV_trained_models.zip](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
+[Improved_ITV model pretrained on_WebVid-genCap7M](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EW4pMfkSJMxIpkINCZOQO-UByX2x8Cl00iRklFp_eNLyjQ?e=ZdssuZ
+[Improved_ITV model finetuned on tgif-msrvtt10k-VATEX](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
 
 ## Usages
 
