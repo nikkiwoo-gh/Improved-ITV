@@ -19,13 +19,19 @@ pip install -r requirements.txt
 
 ## Downloads
 
-### Data
+### Pretraining Dataset
 
 [WebVid-genCap7M dataset](https://drive.google.com/file/d/18Dh20_ZlSGJ_XAFM2P5dpd3qSIR-vSBJ/view)
 
-to be released
+### Concept bank for tgif-msrvtt10k-VATEX
 
-### Checkpoints
+[concept_phrase.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EZZ4l3eo675DmXh0afsPRF8B6rIp8V02WBOJKtv8tPkaxw?e=2iq38f)
+
+### Video-level concept annoation for tgif-msrvtt10k-VATEX
+
+ [tgif-msrvtt10k-VATEX-videl_level_concept annotation](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je) 
+
+### Model Checkpoints
 
 [Improved_ITV_trained_models.zip](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
 
@@ -39,17 +45,23 @@ to be released
 
 e.g.,
 ```shell
-./do_get_vocab_and_concept.sh tgif-msrvtt10k-VATEX
+./do_get_vocab_and_concept.sh tgif-msrvtt10k-VATEX 
 ```
-
+or download from [concept_phrase.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EZZ4l3eo675DmXh0afsPRF8B6rIp8V02WBOJKtv8tPkaxw?e=2iq38f), and unzip to the folder $rootpath/tgif-msrvtt10k-VATEX/TextData/
 ### 2. prepare the data
-to be released
+build up video-level concept annotation (script to be released), or download from [here](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je)   
 
-### 3. train the model from pre-trained checkpoint
+
+### 3. train the Improved ITV model
+
+#### 3.1 train from pre-trained checkpoint
 ```shell
 ./do_train_from_pretrain.sh
 ```
-
+#### 3.2 train without pre-training
+```shell
+./do_train.sh
+```
 ### 4. Inference on TRECVid datasets
 ```shell
 ./do_prediction_iacc.3.sh
