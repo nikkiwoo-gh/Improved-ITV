@@ -36,6 +36,12 @@ pip install -r requirements.txt
 
 [Improved_ITV model finetuned on tgif-msrvtt10k-VATEX](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
 
+### Features for Finetune
+training and valiation sets please refer to [AVS_data](https://github.com/nikkiwoo-gh/AVS_data)
+
+testing sets please refer to [AVS_feature_data](https://github.com/jiaxinwoo/AVS_feature_data)
+
+
 ## Usages
 
 
