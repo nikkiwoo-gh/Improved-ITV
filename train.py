@@ -36,7 +36,6 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--rootpath', type=str, default=ROOT_PATH,
                         help='path to datasets. (default: %s)'%ROOT_PATH)
-    parser.add_argument('--savepath', type=str, default=ROOT_PATH, help='path to save.')
     parser.add_argument('trainCollection', type=str, help='train collection')
     parser.add_argument('valCollection', type=str,  help='validation collection')
     parser.add_argument('testCollection', type=str,  help='test collection')
@@ -139,7 +138,7 @@ def main():
     optimizer_info = 'optimizer_%s_lr_%s_decay_%.2f_grad_clip_%.1f_val_metric_%s' % \
                     (opt.optimizer, opt.learning_rate, opt.lr_decay_rate, opt.grad_clip, opt.val_metric)
 
-    opt.logger_name = os.path.join(opt.savepath,trainCollection, opt.cv_name, valCollection, model_info, text_encode_info,
+    opt.logger_name = os.path.join(opt.rootpath,trainCollection, opt.cv_name, valCollection, model_info, text_encode_info,
                             visual_encode_info, mapping_info, loss_info, optimizer_info, opt.postfix)
     print(opt.logger_name)
 
