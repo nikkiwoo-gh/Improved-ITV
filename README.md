@@ -19,15 +19,28 @@ pip install -r requirements.txt
 
 ## Downloads
 
-### Data
+### Pretraining Dataset
 
 [WebVid-genCap7M dataset](https://drive.google.com/file/d/18Dh20_ZlSGJ_XAFM2P5dpd3qSIR-vSBJ/view)
 
-to be released
+### Concept bank for tgif-msrvtt10k-VATEX
 
-### Checkpoints
+[concept_phrase.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EZZ4l3eo675DmXh0afsPRF8B6rIp8V02WBOJKtv8tPkaxw?e=2iq38f)
 
-[Improved_ITV_trained_models.zip](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
+### Video-level concept annoation for tgif-msrvtt10k-VATEX
+
+ [tgif-msrvtt10k-VATEX-videl_level_concept annotation](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je) 
+
+### Model Checkpoints
+[Improved_ITV model pretrained on_WebVid-genCap7M](https://drive.google.com/file/d/1hif1yS_8H4ap-FtZqdQx4Ug_Joh8CRtM/view?usp=sharing)
+
+[Improved_ITV model finetuned on tgif-msrvtt10k-VATEX](https://drive.google.com/file/d/1fB-U6XrCFfj_n23oB6kvCtO7nw8JQsh_/view?usp=sharing)
+
+### Features for Finetune
+training and valiation sets please refer to [AVS_data](https://github.com/nikkiwoo-gh/AVS_data)
+
+testing sets please refer to [AVS_feature_data](https://github.com/jiaxinwoo/AVS_feature_data)
+
 
 ## Usages
 
@@ -39,25 +52,35 @@ to be released
 
 e.g.,
 ```shell
-./do_get_vocab_and_concept.sh tgif-msrvtt10k-VATEX
+./do_get_vocab_and_concept.sh tgif-msrvtt10k-VATEX 
+```
+or download from [concept_phrase.zip](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EZZ4l3eo675DmXh0afsPRF8B6rIp8V02WBOJKtv8tPkaxw?e=2iq38f), and unzip to the folder $rootpath/tgif-msrvtt10k-VATEX/TextData/
+### 2. prepare concept annotation
+build up video-level concept annotation (script to be released), or download from [here](https://portland-my.sharepoint.com/:u:/g/personal/jiaxinwu9-c_my_cityu_edu_hk/EbKBY5x-zqNIhvpgIabA20IBIqhlFd8Yu6rQNEXkNkhynw?e=ihU9je)   
+
+### 3. (Optional) pretrain the Improved ITV model
+```shell
+./do_pretrain.sh
 ```
 
-### 2. prepare the data
-to be released
+### 4. train the Improved ITV model
 
-### 3. train the model from pre-trained checkpoint
+#### 4.1 train from pre-trained checkpoint
 ```shell
 ./do_train_from_pretrain.sh
 ```
-
-### 4. Inference on TRECVid datasets
+#### 4.2 train without pre-training
+```shell
+./do_train.sh
+```
+### 5. Inference on TRECVid datasets
 ```shell
 ./do_prediction_iacc.3.sh
 ./do_prediction_v3c1.sh
 ./do_prediction_v3c2.sh
 ```
 
-### 5. Evalution
+### 6. Evalution
 Remember to set the score_file correctly to your own path.
 ```shell
 cd tv-avs-eval/
